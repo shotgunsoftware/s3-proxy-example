@@ -2,5 +2,7 @@ version: "3"
 services:
   nginx:
     build: .
+    environment:
+      S3_BUCKET: test-bucket
     ports:
       - "80:80"
