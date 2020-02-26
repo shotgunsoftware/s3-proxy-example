@@ -19,6 +19,12 @@ server {
     access_log /dev/stdout s3proxy;
     error_log stderr;
 
+    location = /ping {
+        default_type text/plain;
+        sendfile off;
+        return 200;
+    }
+
     location / {
         resolver $NAMESERVER ipv6=off;
         proxy_pass https://${S3_BUCKET}.s3.amazonaws.com$uri$is_args$args;
